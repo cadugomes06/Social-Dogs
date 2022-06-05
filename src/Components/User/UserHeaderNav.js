@@ -13,9 +13,8 @@ const UserHeaderNav = () => {
     const [mobileMenu, setMobileMenu] = React.useState(false)
 
     const mobile = UseMedia('(max-width: 40rem)')
-    console.log(mobile)
 
-    const {pathname} = useLocation()
+    const { pathname } = useLocation()
     React.useEffect(() => {
         setMobileMenu(false)
     }, [])
