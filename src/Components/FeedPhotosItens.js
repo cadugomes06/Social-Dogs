@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './FeedPhotoItens.module.css'
+import Image from '../Helper/Image'
 
 const FeedPhotosItens = ({photo, setModalPhoto}) => {
 
@@ -9,7 +10,7 @@ const FeedPhotosItens = ({photo, setModalPhoto}) => {
 
   return (
     <li className={styles.photos} onClick={handleClick}>
-        <img src={photo.src} alt={photo.title} />
+        <Image src={photo.src} alt={photo.title} />
         <span>{photo.acessos}</span>
     </li>
   )
