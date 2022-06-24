@@ -1,10 +1,31 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+import { PHOTO_GET } from '../../api'
+import Loading from '../../Helper/Loading'
+import useFetch from '../../Hooks/useFetch'
+import Error from '../../Helper/Error'
+import PhotoContent from './PhotoContent'
 
 const Photo = () => {
+  const { id } = useParams()
+  const {loading, error, data, request} = useFetch()
 
-  return (
-    <div></div>
+  React.useEffect(() => {
+    const {url, options} = PHOTO_GET(id)
+    request(url, options)
+  }, [id, request])
+
+  
+  if (error) return <Error error={error} />
+  if (loading) return <Loading />
+  if (data) return (
+   <section className='container mainContainer'>
+    <PhotoContent data={data} ></PhotoContent>
+  </section>
   )
-}
+
+  else return null
+
+};
 
 export default Photo
